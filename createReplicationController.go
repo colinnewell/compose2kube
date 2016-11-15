@@ -129,6 +129,7 @@ func configureVolumes(service *config.ServiceConfig) ([]api.VolumeMount, []api.V
 				}
 			}
 			partName := strings.Replace(partHostDir, "/", "", -1)
+			partName = strings.TrimPrefix(partName, ".")
 			if len(parts) > 2 {
 				volumemounts = append(volumemounts, api.VolumeMount{Name: partName, ReadOnly: partReadOnly, MountPath: partContainerDir})
 			} else {
